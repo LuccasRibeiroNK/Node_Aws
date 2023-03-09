@@ -13,7 +13,7 @@ const db = mysql.createConnection({
 });
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the application." });
+    return res.json({ message: "Welcome to the application." });
 });
 
 // app.get('/', (req, res) => {
