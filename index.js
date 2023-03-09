@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     return res.send({message:'Server is running'});
 });
 
-app.get('atualizar', (req, res) => {
+app.get('/atualizar', (req, res) => {
     return res.send({message:'Atualizou mesmo!'});
 });
 
