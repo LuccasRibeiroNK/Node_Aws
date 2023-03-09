@@ -12,13 +12,10 @@ const db = mysql.createConnection({
     database: "test"
 });
 
-app.get("/", (req, res) => {
-    res.json("Welcome to the application!!" );
-});
 
-// app.get('/', (req, res) => {
-//     return res.send({message:'Server is running on port 3333'});
-// });
+app.get('/', (req, res) => {
+    return res.send({message:'Server is running on port 3333'});
+});
 
 // app.get('/atualizar', (req, res) => {
 //     return res.send({message:'Atualizou mesmo para o nodemon!'});
