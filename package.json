@@ -1,5 +1,5 @@
 {
-  "name": "Node_AWS",
+  "name": "nodeaws",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,6 +11,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
+    "mysql2": "^3.2.0",
     "nodemon": "^2.0.21"
   }
 }

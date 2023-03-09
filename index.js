@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const app = express();
 
@@ -12,9 +12,14 @@ const db = mysql.createConnection({
     database: "test"
 });
 
+db.query('SELECT * FROM books', (err, result) => {
+    if (err) {  console.log(err); }
+    else {  console.log(result); }
+});
 
-app.get('/', (req, res) => {
-    return res.send({message:'Server is running on port 3333'});
+
+app.get('/books', (req, res) => {
+    return res.send({message:'Books!'});
 });
 
 // app.get('/atualizar', (req, res) => {
