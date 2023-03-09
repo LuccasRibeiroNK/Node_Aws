@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    return res.send({message:'Server is running'});
+    return res.send({message:'Server is running on port 3333'});
 });
 
 app.get('/atualizar', (req, res) => {
