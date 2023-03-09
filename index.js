@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/atualizar', (req, res) => {
-    return res.send({message:'Atualizou mesmo!'});
+    return res.send({message:'Atualizou mesmo, mesmo!'});
 });
 
 app.post('/teste', (req, res) => {
