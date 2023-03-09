@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/atualizar', (req, res) => {
-    return res.send({message:'Atualizou para o nodemon!'});
+    return res.send({message:'Atualizou mesmo para o nodemon!'});
 });
 
 app.post('/teste', (req, res) => {
