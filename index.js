@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
     return res.send({message:'Server is running'});
 });
 
+app.get('atualizar', (req, res) => {
+    return res.send({message:'Atualizou mesmo!'});
+});
+
 app.post('/teste', (req, res) => {
     const {name, date} = req.body;
     return res.json({name, date});
