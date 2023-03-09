@@ -3,7 +3,7 @@ const mysql = require('mysql');
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
 const db = mysql.createConnection({
     host: "mysqlserver.cntsqjxnav68.us-east-1.rds.amazonaws.com",
@@ -13,7 +13,7 @@ const db = mysql.createConnection({
 });
 
 app.get("/", (req, res) => {
-    res.json("Welcome to the application." );
+    res.json("Welcome to the application!" );
 });
 
 // app.get('/', (req, res) => {
