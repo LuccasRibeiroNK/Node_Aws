@@ -1,11 +1,11 @@
-const express = require('express');
-const mysql = require('mysql2');
+import express from 'express';
+import { createConnection } from 'mysql2';
 
 const app = express();
 
 // app.use(express.json());
 
-const db = mysql.createConnection({
+const db = createConnection({
     host: "mysqlserver.cntsqjxnav68.us-east-1.rds.amazonaws.com",
     user: "admin",
     password: "admin123",
