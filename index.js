@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 
 app.post('/teste', (req, res) => {
     const {name, date} = req.body;
-    return response.json({name, date});
+    return res.json({name, date});
 });
 
 app.listen(3333);
