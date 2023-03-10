@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 
-// app.use(express.json());
+app.use(express.json());
 
 // const db = createConnection({
 //     host: "mysqlserver.cntsqjxnav68.us-east-1.rds.amazonaws.com",
@@ -22,9 +22,9 @@ app.get('/', (req, res) => {
     return res.send({message:'Hello World!'});
 });
 
-// app.get('/atualizar', (req, res) => {
-//     return res.send({message:'Atualizou mesmo para o nodemon!'});
-// });
+app.get('/atualizar', (req, res) => {
+    return res.send({message:'Atualizou mesmo para o nodemon!'});
+});
 
 // app.post('/teste', (req, res) => {
 //     const {name, date} = req.body;
