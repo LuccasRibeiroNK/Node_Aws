@@ -23,9 +23,9 @@ app.get("/books", (req, res) => {
 });
 
 
-// app.get('/', (req, res) => {
-//     return res.send({message:'Hello World!'});
-// });
+app.get('/', (req, res) => {
+    return res.send({message:'Hello World!'});
+});
 
 // app.get('/atualizar', (req, res) => {
 //     return res.send({message:'Atualizou mesmo para o nodemon!'});
