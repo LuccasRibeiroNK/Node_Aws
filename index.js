@@ -12,9 +12,14 @@ const db = createConnection({
     database: "test"
 });
 
-db.query('SELECT * FROM books', (err, result) => {
-    if (err) {  console.log(err); }
-    else {  console.log(result); }
+app.get("/books", (req, res) => {
+    db.query("SELECT * FROM books", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
 });
 
 
