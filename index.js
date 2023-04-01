@@ -1,40 +1,41 @@
-import express from 'express';
-import { createConnection } from 'mysql2';
-
+require('dotenv').config();
+//require express
+const express = require('express');
+const mysql = require('mysql2');
 const app = express();
 
 app.use(express.json());
 
-const db = createConnection({
-    host: "mysqlserver.cntsqjxnav68.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "admin123",
-    database: "test"
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbDatabase = process.env.DB_DATABASE;
+
+const connection = mysql.createConnection({
+  host: dbHost,
+  user: dbUser,
+  password: dbPassword,
+  database: dbDatabase,
 });
 
-app.get("/books", (req, res) => {
-    db.query("SELECT * FROM books", (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    });
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to database:', err);
+    return;
+  }
+  console.log('Connected to database!');
 });
 
-
-app.get('/', (req, res) => {
-    return res.send({message:'Hello World!'});
+app.get('/PRODUTOS', (req, res) => {
+  connection.query('SELECT * FROM PRODUTO', (err, results) => {
+    if (err) {
+      console.error('Error querying database:', err);
+      res.status(500).send('Error querying database');
+      return;
+    }
+    res.json(results);
+  });
 });
-
-// app.get('/atualizar', (req, res) => {
-//     return res.send({message:'Atualizou mesmo para o nodemon!'});
-// });
-
-// app.post('/teste', (req, res) => {
-//     const {name, date} = req.body;
-//     return res.json({name, date});
-// });
 
 app.listen(3333, () => {
     console.log('Server is running on port 3333');
