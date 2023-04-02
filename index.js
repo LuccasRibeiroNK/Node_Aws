@@ -26,8 +26,16 @@ connection.connect((err) => {
   console.log('Connected to database!');
 });
 
-app.get('/PRODUTOS', (req, res) => {
-  connection.query('SELECT * FROM PRODUTO', (err, results) => {
+app.get('/', (req, res) => {
+    res.send('Hello World!'
+    // create a button to page: produtos
+    + '<br><br><a href="/produtos">produtos</a>'
+
+    );
+});
+
+app.get('/produtos', (req, res) => {
+  connection.query('SELECT * FROM livros', (err, results) => {
     if (err) {
       console.error('Error querying database:', err);
       res.status(500).send('Error querying database');
@@ -37,7 +45,26 @@ app.get('/PRODUTOS', (req, res) => {
   });
 });
 
+app.post('/produtos', (req, res) => {
+    const q = 'INSERT INTO livros (`title`, `desc`, `cover`) VALUES (?)';
+    const values = [
+        "title from backend",
+        "desc from backend 2",
+        "cover from backend 2"
+    ];
+
+    connection.query(q, [values], (err, results) => {
+        if (err) {
+            console.error('Error querying database:', err);
+            res.status(500).send('Error querying database');
+            return;
+        }
+        res.json(results, 'Produto inserido com sucesso');
+    });
+});
+
+
 app.listen(3333, () => {
-    console.log('Server is running on port 3333');
+    console.log('Server is running on port: 3333');
 });
 
