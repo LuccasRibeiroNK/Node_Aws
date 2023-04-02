@@ -48,9 +48,9 @@ app.get('/produtos', (req, res) => {
 app.post('/produtos', (req, res) => {
     const q = 'INSERT INTO livros (`title`, `desc`, `cover`) VALUES (?)';
     const values = [
-        "title from backend",
-        "desc from backend 2",
-        "cover from backend 2"
+        req.body.title,
+        req.body.desc,
+        req.body.cover
     ];
 
     connection.query(q, [values], (err, results) => {
