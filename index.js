@@ -59,7 +59,7 @@ app.post('/produtos', (req, res) => {
             res.status(500).send('Error querying database');
             return;
         }
-        res.json(results, 'Produto inserido com sucesso');
+        res.status(201).send('Livro criado com sucesso!');
     });
 });
 
