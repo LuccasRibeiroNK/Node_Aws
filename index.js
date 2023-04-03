@@ -1,10 +1,12 @@
 require('dotenv').config();
-//require express
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
+
 
 const dbHost = process.env.DB_HOST;
 const dbUser = process.env.DB_USER;
@@ -34,7 +36,7 @@ app.get('/', (req, res) => {
     );
 });
 
-app.get('/produtos', (req, res) => {
+app.get('/livros', (req, res) => {
   connection.query('SELECT * FROM livros', (err, results) => {
     if (err) {
       console.error('Error querying database:', err);
@@ -45,7 +47,7 @@ app.get('/produtos', (req, res) => {
   });
 });
 
-app.post('/produtos', (req, res) => {
+app.post('/livros', (req, res) => {
     const q = 'INSERT INTO livros (`title`, `desc`, `cover`) VALUES (?)';
     const values = [
         req.body.title,
