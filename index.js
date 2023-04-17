@@ -52,6 +52,17 @@ app.post("/livros", (req, res) => {
     req.body.cover,
   ];
 
+  app.get("/portfolio", (req, res) => {
+    connection.query("SELECT * FROM livros", (err, results) => {
+      if (err) {
+        console.error("Error querying database:", err);
+        res.status(500).send("Error querying database");
+        return;
+      }
+      res.json(results);
+    });
+  });
+
   connection.query(q, [values], (err, results) => {
     if (err) {
       console.error("Error querying database:", err);
