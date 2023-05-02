@@ -64,7 +64,7 @@ app.post("/livros", (req, res) => {
 });
 
 app.get("/portfolio", (req, res) => {
-  connection.query("SELECT * FROM livros", (err, results) => {
+  connection.query("SELECT * FROM portfolio", (err, results) => {
     if (err) {
       console.error("Error querying database:", err);
       res.status(500).send("Error querying database");
